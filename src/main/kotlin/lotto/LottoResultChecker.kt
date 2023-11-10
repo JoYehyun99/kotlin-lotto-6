@@ -2,13 +2,7 @@ package lotto
 
 class LottoResultChecker {
 
-    private val winningResult: MutableMap<WinningCriteria, Int> = mutableMapOf(
-        WinningCriteria.FIRST to 0,
-        WinningCriteria.SECOND to 0,
-        WinningCriteria.THIRD to 0,
-        WinningCriteria.FOURTH to 0,
-        WinningCriteria.FIFTH to 0
-    )
+    private val winningResult: MutableMap<WinningCriteria, Int> = mutableMapOf()
 
     fun compareLottoTicketsWithWinningNumbers(
         lottoTickets: List<Lotto>,
