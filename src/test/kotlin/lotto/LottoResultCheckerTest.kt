@@ -81,18 +81,18 @@ class LottoResultCheckerTest {
 
     @Test
     fun When_Earnings_1000_Input_1000_Expect_100() {
-        lottoResultChecker.addEarnings(1000)
         val input = 1000
-        val result = lottoResultChecker.calculateEarningRate(input)
+        val earnings = 1000
+        val result = lottoResultChecker.calculateEarningRate(earnings,input)
         val expected = 100.0
         assertEquals(result, expected)
     }
 
     @Test
     fun When_NoEarning_Expect_0() {
-        val input = listOf(inputs[5])
-        lottoResultChecker.compareLottoTicketsWithWinningNumbers(input, winnerNumbers, bonusNumber)
-        val result = lottoResultChecker.calculateEarningRate(1000)
+        val input = 1000
+        val earnings = 0
+        val result = lottoResultChecker.calculateEarningRate(earnings,input)
         val expected = 0.0
         assertEquals(result, expected)
     }
