@@ -16,7 +16,9 @@ class LottoGame(
 
         val winningResult = determineWiningResult(lottoTickets)
         gameConsole.showWinningStatistic(winningResult)
-        gameConsole.showEarningRate(lottoResultChecker.calculateEarningRate(price))
+
+        val earnings = lottoResultChecker.calculateEarnings(winningResult)
+        gameConsole.showEarningRate(lottoResultChecker.calculateEarningRate(earnings,price))
     }
 
     fun generateLottoTickets(price: Int): List<Lotto>{

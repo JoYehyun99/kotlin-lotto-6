@@ -9,7 +9,6 @@ class LottoResultChecker {
         WinningCriteria.FOURTH to 0,
         WinningCriteria.FIFTH to 0
     )
-    private var earnings = 0
 
     fun compareLottoTicketsWithWinningNumbers(
         lottoTickets: List<Lotto>,
@@ -20,7 +19,6 @@ class LottoResultChecker {
             val result = setWinningResult(lotto.countSameNumber(winningNumbers), lotto.hasBonusNumber(bonusNumber))
             if (result != WinningCriteria.NONE) {
                 winningResult[result] = winningResult.getOrDefault(result, 0) + 1
-                addEarnings(result.prize)
             }
         }
         return winningResult.toMap()
@@ -37,11 +35,15 @@ class LottoResultChecker {
         }
     }
 
-    fun addEarnings(price: Int) {
-        earnings += price
+    fun calculateEarnings(winningResult: Map<WinningCriteria, Int>): Int {
+        var earnings = 0
+        winningResult.entries.forEach { (rank, count) ->
+            earnings += (rank.prize * count)
+        }
+        return earnings
     }
 
-    fun calculateEarningRate(inputPrice: Int): Double {
+    fun calculateEarningRate(earnings: Int, inputPrice: Int): Double {
         return (earnings.toDouble() / inputPrice) * 100
     }
 }
