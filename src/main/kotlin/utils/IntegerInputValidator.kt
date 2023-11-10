@@ -1,6 +1,7 @@
 package utils
 
 import lotto.LottoMachine
+import lotto.LottoMachine.Companion.WON_PER_LOTTO
 
 open class IntegerInputValidator {
 
@@ -28,6 +29,6 @@ open class IntegerInputValidator {
     companion object {
         const val INPUT_STRING_ERR_MSG = "숫자를 입력해주세요."
         const val INPUT_NEGATIVE_ERR_MSG = "음수 값이 올 수 없습니다."
-        const val INPUT_ZERO_ERR_MSG = "1000 이상의 값을 입력해주세요."
+        const val INPUT_ZERO_ERR_MSG = "$WON_PER_LOTTO 이상의 값을 입력해주세요."
     }
 }
