@@ -43,19 +43,9 @@ class UserInputReader {
     }
 
     fun getBonusNumber(winningNumbers: List<Int>): Int {
-        var isValid: Boolean
-        var userInput: String
-        do {
-            println(ENTER_BONUS_NUM_MSG)
-            userInput = Console.readLine()
-            isValid = try {
-                bonusNumberValidator.checkInputValidation(userInput, winningNumbers)
-            } catch (e: IllegalArgumentException) {
-                println(createErrMsg(e.message ?: "Unknown error"))
-                false
-            }
-        } while (!isValid)
-
+        val userInput = readInputUntilValidInput(ENTER_BONUS_NUM_MSG) {
+            bonusNumberValidator.checkInputValidation(it, winningNumbers)
+        }
         return userInput.toInt()
     }
 
