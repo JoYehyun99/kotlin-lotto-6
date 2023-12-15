@@ -6,8 +6,7 @@ import ui.UserInputReader
 class LottoGame(
     private val userInputReader: UserInputReader,
     private val lottoMachine: LottoMachine,
-    private val gameConsole: GameConsole,
-    private val lottoResultChecker: LottoResultChecker
+    private val gameConsole: GameConsole
 ) {
     fun start() {
         val price = userInputReader.getPrice()
@@ -17,8 +16,8 @@ class LottoGame(
         val winningResult = determineWiningResult(lottoTickets)
         gameConsole.showWinningStatistic(winningResult)
 
-        val earnings = lottoResultChecker.calculateEarnings(winningResult)
-        gameConsole.showEarningRate(lottoResultChecker.calculateEarningRate(earnings,price))
+        val earnings = LottoResultChecker.calculateEarnings(winningResult)
+        gameConsole.showEarningRate(LottoResultChecker.calculateEarningRate(earnings,price))
     }
 
     fun generateLottoTickets(price: Int): List<Lotto>{
@@ -29,6 +28,7 @@ class LottoGame(
     private fun determineWiningResult(lottoTickets: List<Lotto>): Map<WinningCriteria, Int> {
         val winningNumbers = userInputReader.getWinningNumbers()
         val bonusNumber = userInputReader.getBonusNumber(winningNumbers)
-        return lottoResultChecker.compareLottoTicketsWithWinningNumbers(lottoTickets, winningNumbers, bonusNumber)
+
+        return LottoResultChecker.compareLottoTicketsWithWinningNumbers(lottoTickets, winningNumbers, bonusNumber)
     }
 }

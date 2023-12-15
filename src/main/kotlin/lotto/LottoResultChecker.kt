@@ -1,6 +1,6 @@
 package lotto
 
-class LottoResultChecker {
+object LottoResultChecker {
 
     private val winningResult: MutableMap<WinningCriteria, Int> = mutableMapOf(
         WinningCriteria.FIRST to 0,

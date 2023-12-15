@@ -4,6 +4,6 @@ import ui.GameConsole
 import ui.UserInputReader
 
 fun main() {
-    val lottoGame = LottoGame(UserInputReader(), LottoMachine(), GameConsole(), LottoResultChecker())
+    val lottoGame = LottoGame(UserInputReader(), LottoMachine(), GameConsole())
     lottoGame.start()
 }
